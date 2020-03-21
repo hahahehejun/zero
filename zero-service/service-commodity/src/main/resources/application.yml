@@ -1,0 +1,76 @@
+base:
+  config:
+    nacos:
+      hostname: 192.168.17.134
+      port: 8848
+    rocketmq:
+      hostname: 192.168.17.131
+      port: 9876
+  oauth2:
+    grant_type: password
+    client_id: client
+    client_secret: secret
+
+
+server:
+  port: 9004
+  servlet:
+    context-path: /
+
+security:
+  oauth2:
+    client:
+      client-id: client
+      client-secret: secret
+      access-token-uri: http://localhost:9001/oauth/token
+      user-authorization-uri: http://localhost:9001/oauth/authorize
+    resource:
+      token-info-uri: http://localhost:9001/oauth/check_token
+
+
+spring:
+  application:
+    name: zero-commodity
+  datasource:
+    url: jdbc:mysql://192.168.17.131:3306/zero-commodity?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+    username: root
+    password: 12345
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      minimum-idle: 5
+      idle-timeout: 600000
+      maximum-pool-size: 10
+      auto-commit: true
+      pool-name: MyHikariCP
+      max-lifetime: 1800000
+      connection-timeout: 30000
+      connection-test-query: SELECT 1
+  cloud:
+    nacos:
+      discovery:
+        server-addr: ${base.config.nacos.hostname}:${base.config.nacos.port}
+    stream:
+      rocketmq:
+        binder:
+          name-server: ${base.config.rocketmq.hostname}:${base.config.rocketmq.port}
+      bindings:
+        admin-login-log-topic: {destination: sms, content-type: application/json}
+
+  jpa:
+    database: MySQL
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+  redis:
+    host: 192.168.17.131
+    password: 123456
+
+dubbo:
+  scan:
+    base-packages: com.demo.zero.service.commodity.service
+  protocol:
+    name: dubbo
+    port: -1
+  registry:
+    address: nacos://192.168.17.134:8848
