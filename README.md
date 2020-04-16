@@ -18,4 +18,4 @@
 
 ## 项目主要模块划分
 待完善...
-![image](https://note.youdao.com/yws/api/personal/file/508DD3EB1CAD4679957F5C9371703A81?method=download&shareKey=0537822fbb11444da8f1c38a2c63e33d)
+![image](https://raw.githubusercontent.com/hahahehejun/zero/master/zero%E6%A8%A1%E5%9D%97%E5%88%92%E5%88%86.png)
