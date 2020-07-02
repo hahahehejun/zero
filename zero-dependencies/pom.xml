@@ -22,7 +22,7 @@
 		<lombok.version>1.16.18</lombok.version>
 		<fastjson.version>1.2.31</fastjson.version>
 		<p6spy.version>3.0.0</p6spy.version>
-		<mysql.version>5.1.35</mysql.version>
+		<mysql.version>8.0.16</mysql.version>
 		<swagger2.version>2.8.0</swagger2.version>
 		<hibernate-validator.version>5.3.4.Final</hibernate-validator.version>
 		<apache.http.version>4.5.5</apache.http.version>
